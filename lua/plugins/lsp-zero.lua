@@ -32,6 +32,10 @@ local M = {
         local cmp_action = require('lsp-zero').cmp_action()
 
         cmp.setup({
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
             completion = {
                 autocomplete = false
             },
@@ -40,7 +44,6 @@ local M = {
                 ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-Space>'] = cmp.mapping.complete(),
-                ['.'] = cmp.mapping.complete(),
             }
         })
         lsp.setup()
