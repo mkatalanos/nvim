@@ -40,10 +40,12 @@ local M = {
                 ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-Space>'] = cmp.mapping.complete(),
+                ['.'] = cmp.mapping.complete(),
             }
         })
         lsp.setup()
     end
 }
+
 
 return M
