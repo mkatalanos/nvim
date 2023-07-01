@@ -1,5 +1,5 @@
-local M = {"tpope/vim-commentary" }
+local M = { "tpope/vim-commentary" }
 
-vim.keymap.set('', '<C-_>', 'gcc', {remap=true})
+vim.keymap.set('', '<C-_>', 'gcc', { remap = true })
 
 return M

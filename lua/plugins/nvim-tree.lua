@@ -1,6 +1,6 @@
-local M={
+local M = {
     "nvim-tree/nvim-tree.lua",
-    config=function()
+    config = function()
         require("nvim-tree").setup({
             update_cwd = true,
             update_focused_file = {
@@ -18,6 +18,6 @@ local M={
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.keymap.set('n','<c-n>',':NvimTreeFindFileToggle<CR>',{silent=true})
+vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>', { silent = true })
 
 return M

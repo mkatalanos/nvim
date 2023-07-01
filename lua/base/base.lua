@@ -53,4 +53,3 @@ opt.mouse = "a"
 -- Map <leader> to ','
 g.mapleader = ","
 g.maplocalleader = ","
-
