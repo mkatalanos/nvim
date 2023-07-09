@@ -21,11 +21,13 @@ vim.keymap.set('n', '<space>ff', ':Telescope find_files<CR>', { silent = true, r
 vim.keymap.set('n', '<space>fg', ':Telescope live_grep<CR>', { silent = true, remap = true })
 vim.keymap.set('n', '<space>fb', ':Telescope buffers<CR>', { silent = true, remap = true })
 vim.keymap.set('n', '<space>fh', ':Telescope help_tags<CR>', { silent = true, remap = true })
+vim.keymap.set('n', '<space>fm', ':Telescope keymaps<CR>', { silent = true, remap = true })
 
 vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', {})
 vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>', {})
 vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', {})
 vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>', {})
+vim.keymap.set('n', '<leader>fm', ':Telescope keymaps<CR>', {})
 vim.keymap.set('n', '<C-p>', ':Telescope git_files<CR>', {})
 
 return M
