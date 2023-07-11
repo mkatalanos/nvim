@@ -16,6 +16,9 @@ local M = {
         { 'hrsh7th/nvim-cmp' },     -- Required
         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
         { 'L3MON4D3/LuaSnip' },     -- Required
+
+        -- Formatting
+        { "jose-elias-alvarez/null-ls.nvim" }, -- Required
     },
     config = function()
         local lsp = require('lsp-zero').preset({})
@@ -36,9 +39,9 @@ local M = {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
-            completion = {
-                autocomplete = false
-            },
+            -- completion = {
+            --     autocomplete = false
+            -- },
             mapping = {
                 ['<Tab>'] = cmp_action.tab_complete(),
                 ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
@@ -47,6 +50,17 @@ local M = {
             }
         })
         lsp.setup()
+
+        local null_ls = require "null-ls"
+        local formatting = null_ls.builtins.formatting
+
+        null_ls.setup {
+            sources = {
+                formatting.prettier,
+                formatting.verible_verilog_format,
+                formatting.autopep8,
+            }
+        }
     end
 }
 
