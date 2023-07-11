@@ -28,6 +28,18 @@ vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>', {})
 vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', {})
 vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>', {})
 vim.keymap.set('n', '<leader>fm', ':Telescope keymaps<CR>', {})
-vim.keymap.set('n', '<C-p>', ':Telescope git_files<CR>', {})
+
+vim.keymap.set('n', '<C-p>', function()
+    local is_dir = function(path)
+        local ok = vim.loop.fs_stat(path)
+        return ok
+    end
+    local path = vim.loop.cwd() .. '/.git'
+    if is_dir(path) then
+        vim.cmd('Telescope git_files')
+    else
+        vim.cmd('Telescope find_files')
+    end
+end, {})
 
 return M
