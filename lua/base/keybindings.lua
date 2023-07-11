@@ -21,3 +21,11 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- VS code style toggle wrap
 vim.keymap.set("", "<M-z>", function() vim.cmd [[set wrap!]] end)
+
+
+-- Run shell command on visual selection
+vim.keymap.set("v", "<leader><CR>", [[:'<,'>!]])
+
+-- Replace visual selection with pandoc latex
+vim.keymap.set("v", "<leader>mark", [[:'<,'>! pandoc -f markdown -t latex<CR>]])
+
