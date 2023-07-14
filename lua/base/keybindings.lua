@@ -27,5 +27,7 @@ vim.keymap.set("", "<M-z>", function() vim.cmd [[set wrap!]] end)
 vim.keymap.set("v", "<leader><CR>", [[:'<,'>!]])
 
 -- Replace visual selection with pandoc latex
-vim.keymap.set("v", "<leader>mark", [[:'<,'>! pandoc -f markdown -t latex<CR>]])
+vim.keymap.set("v", "<leader>mark", [[:'<,'>! pandoc -f markdown -t latex --biblatex<CR>]])
 
+-- Term escape instead of vimode
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
