@@ -31,3 +31,7 @@ vim.keymap.set("v", "<leader>mark", [[:'<,'>! pandoc -f markdown -t latex --bibl
 
 -- Term escape instead of vimode
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+
+-- Enable spell checking
+vim.keymap.set('n','<leader>z=',[[:set spell! spelllang=en_gb<CR>]])
+
