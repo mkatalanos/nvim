@@ -31,6 +31,7 @@ o.smarttab = true
 o.cindent = true
 o.autoindent = true
 o.wrap = true
+o.linebreak = true
 o.textwidth = 300
 o.tabstop = 4
 o.shiftwidth = 4
