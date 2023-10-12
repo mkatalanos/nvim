@@ -29,6 +29,19 @@ local M = {
 
         -- (Optional) Configure lua language server for neovim
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        require('lspconfig').ltex.setup({
+            settings = {
+                ltex = {
+                    language = "en-GB",
+                    setenceCacheSize = 2000,
+                    additionalRules = {
+                        enablePickyRules = true,
+                        motherTongue = "el-GR"
+                    },
+                    -- languageToolHttpServerUri="http://localhost:8010"
+                }
+            },
+        })
         -- Make sure you setup `cmp` after lsp-zero
 
         local cmp = require('cmp')
@@ -64,5 +77,6 @@ local M = {
     end
 }
 
+vim.keymap.set({ "n"}, "<M-CR>",[[:lua vim.lsp.buf.code_action()<CR>]])
 
 return M
