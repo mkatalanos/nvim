@@ -42,6 +42,18 @@ local M = {
                 }
             },
         })
+
+        require('lspconfig').pylsp.setup {
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            enabled = false
+                        }
+                    }
+                }
+            }
+        }
         -- Make sure you setup `cmp` after lsp-zero
 
         local cmp = require('cmp')
@@ -77,6 +89,6 @@ local M = {
     end
 }
 
-vim.keymap.set({ "n"}, "<M-CR>",[[:lua vim.lsp.buf.code_action()<CR>]])
+vim.keymap.set({ "n" }, "<M-CR>", [[:lua vim.lsp.buf.code_action()<CR>]])
 
 return M
