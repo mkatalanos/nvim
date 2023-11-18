@@ -25,6 +25,9 @@ local M = {
 
         lsp.on_attach(function(client, bufnr)
             lsp.default_keymaps({ buffer = bufnr })
+
+
+            vim.keymap.set({ "n" }, "<M-CR>", [[:lua vim.lsp.buf.code_action()<CR>]])
         end)
 
         -- (Optional) Configure lua language server for neovim
@@ -72,6 +75,10 @@ local M = {
                 ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 ['<C-Space>'] = cmp.mapping.complete(),
+            },
+            sources = {
+                { name = 'nvim_lsp' },
+                { name = 'nvim_lsp_signature_help' }
             }
         })
         lsp.setup()
@@ -89,6 +96,5 @@ local M = {
     end
 }
 
-vim.keymap.set({ "n" }, "<M-CR>", [[:lua vim.lsp.buf.code_action()<CR>]])
 
 return M
