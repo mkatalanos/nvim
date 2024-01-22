@@ -28,8 +28,9 @@ o.cursorline = true
 -- Better editing experience
 o.expandtab = true
 o.smarttab = true
-o.cindent = true
+o.cindent = false
 o.autoindent = true
+o.smartindent = true
 o.wrap = true
 o.linebreak = true
 o.textwidth = 300

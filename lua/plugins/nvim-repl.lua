@@ -3,7 +3,8 @@ local M = {
     init = function()
         vim.g["repl_filetype_commands"] = {
             javascript = "node",
-            python = "ipython --no-autoindent"
+            python = "ipython --no-autoindent",
+            haskell = "cabal repl"
         }
 
         vim.g["repl_split"] = 'bottom'
