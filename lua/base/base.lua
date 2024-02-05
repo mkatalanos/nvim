@@ -24,6 +24,8 @@ o.number = true
 o.relativenumber = true
 o.signcolumn = "no"
 o.cursorline = true
+o.splitbelow = true
+o.splitright = true
 
 -- Better editing experience
 o.expandtab = true

@@ -19,6 +19,9 @@ local M = {
 
         -- Formatting
         { "jose-elias-alvarez/null-ls.nvim" }, -- Required
+        -- LTEX LS Config
+        "barreiroleo/ltex-extra.nvim",
+
     },
     config = function()
         local lsp = require('lsp-zero').preset({})
@@ -44,6 +47,9 @@ local M = {
                     -- languageToolHttpServerUri="http://localhost:8010"
                 }
             },
+            on_attach = function(client, bufnr)
+                require("ltex_extra").setup()
+            end
         })
 
         require('lspconfig').pylsp.setup {

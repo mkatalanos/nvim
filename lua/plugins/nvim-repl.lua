@@ -12,6 +12,7 @@ local M = {
     keys = {
         { "<leader>rt", "<cmd>ReplToggle<cr>",  desc = "Toggle nvim-repl" },
         { "<leader>rc", "<cmd>ReplRunCell<cr>", desc = "nvim-repl run cell" },
+        { "<leader>rr", "<cmd>Repl zsh<cr>",    desc = "Launch nvim-repl" },
     },
 }
 
