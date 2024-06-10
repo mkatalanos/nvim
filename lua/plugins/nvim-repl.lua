@@ -4,7 +4,11 @@ local M = {
         vim.g["repl_filetype_commands"] = {
             javascript = "node",
             python = "ipython --no-autoindent",
-            haskell = "cabal repl"
+            haskell = "cabal repl",
+            rust = "cargo run",
+            go = "go run .",
+            glsl = "go run .",
+
         }
 
         vim.g["repl_split"] = 'bottom'

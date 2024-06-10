@@ -3,13 +3,10 @@ return {
     config = function()
         require 'nvim-treesitter.configs'.setup {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
-            ensure_installed = { "c", "cpp" ,"lua", "vim", "vimdoc", "query", "python", "verilog", "rust" , "markdown", "markdown_inline"},
+            ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
-
-            -- Automatically install missing parsers when entering buffer
-            -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
             auto_install = true,
 
             ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
@@ -33,6 +30,7 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = false,
             },
+            indent = { enable = true }
         }
 
         vim.cmd([[
@@ -40,5 +38,6 @@ return {
             set foldexpr=nvim_treesitter#foldexpr()
             set nofoldenable " Disable folding at startup.
         ]])
+        vim.filetype.add({ extension = { templ = "templ" } })
     end
 }

@@ -55,7 +55,21 @@ vim.keymap.set("n", "<leader>pd", function()
 end)
 
 -- Term escape instead of vimode
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit Terminal Mode' })
+
+-- NOHL on Escape
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Enable spell checking
 vim.keymap.set('n', '<leader>z=', [[:set spell! spelllang=en_gb<CR>]])
+
+-- Quick move to other splits
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Diagnostics
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Diagnostic list' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
