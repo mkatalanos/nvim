@@ -19,8 +19,7 @@ o.hlsearch = true
 
 -- Colours
 o.termguicolors = true
-o.background = 'dark'
-
+o.background = "dark"
 
 -- Decrease update time
 o.timeoutlen = 1000
@@ -28,7 +27,6 @@ o.updatetime = 200
 
 -- Number of screen lines to keep above and below the cursor
 o.scrolloff = 4
-
 
 -- Better editing experience
 o.expandtab = true
@@ -48,7 +46,6 @@ o.undofile = true
 
 -- Makes neovim and host OS clipboard play nicely with each other
 o.clipboard = "unnamedplus"
-
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
