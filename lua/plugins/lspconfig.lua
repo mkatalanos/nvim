@@ -176,7 +176,12 @@ return {
 
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			"delve", -- DAP
+			-- Formatters
 			"stylua",
+			"autopep8",
+			"isort",
+			"prettier",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		require("mason-lspconfig").setup({
