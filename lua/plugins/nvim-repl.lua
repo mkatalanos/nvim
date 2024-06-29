@@ -14,9 +14,9 @@ local M = {
         vim.g["repl_split"] = 'bottom'
     end,
     keys = {
-        { "<leader>rt", "<cmd>ReplToggle<cr>",  desc = "Toggle nvim-repl" },
-        { "<leader>rc", "<cmd>ReplRunCell<cr>", desc = "nvim-repl run cell" },
-        { "<leader>rr", "<cmd>Repl zsh<cr>",    desc = "Launch nvim-repl" },
+        { "<LocalLeader>rt", "<cmd>ReplToggle<cr>",  desc = "Toggle nvim-repl" },
+        { "<LocalLeader>rc", "<cmd>ReplRunCell<cr>", desc = "nvim-repl run cell" },
+        { "<LocalLeader>rr", "<cmd>Repl zsh<cr>",    desc = "Launch nvim-repl" },
     },
 }
 

@@ -5,32 +5,28 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Paste without deleting buffer
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<LocalLeader>p", [["_dP]])
 
 -- Copy to clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<LocalLeader>y", [["+y]])
 
 -- Delete to void
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<LocalLeader>d", [["_d]])
 
 -- Disable Evil mode
 vim.keymap.set("n", "Q", ":qa!<CR>", { remap = true })
 
 -- Substitute current word
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<LocalLeader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- VS code style toggle wrap
 vim.keymap.set("", "<M-z>", function() vim.cmd [[set wrap!]] end)
 
-
--- Run shell command on visual selection
-vim.keymap.set("v", "<leader><CR>", [[:'<,'>!]])
-
 -- Replace visual selection with pandoc latex
-vim.keymap.set("v", "<leader>mark", [[:'<,'>! pandoc -f markdown -t latex --biblatex<CR>]])
+vim.keymap.set("v", "<LocalLeader>mark", [[:'<,'>! pandoc -f markdown -t latex --biblatex<CR>]])
 
 -- Run Pandoc on Buffer
-vim.keymap.set("n", "<leader>pd", function()
+vim.keymap.set("n", "<LocalLeader>pd", function()
     local api = vim.api
     -- Get the current buffer's content
     local current_buffer = api.nvim_get_current_buf()
@@ -61,7 +57,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit Terminal Mode' })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Enable spell checking
-vim.keymap.set('n', '<leader>z=', [[:set spell! spelllang=en_gb<CR>]])
+vim.keymap.set('n', '<LocalLeader>z=', [[:set spell! spelllang=en_gb<CR>]])
 
 -- Quick move to other splits
 -- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

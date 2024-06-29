@@ -2,8 +2,8 @@ local g = vim.g
 local o = vim.o
 local opt = vim.opt
 
--- Map <leader> to ','
-g.mapleader = ","
+-- Map leader keys
+g.mapleader = " "
 g.maplocalleader = ","
 
 -- Better editor UI
