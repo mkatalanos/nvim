@@ -56,9 +56,6 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit Terminal Mode' })
 -- NOHL on Escape
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Enable spell checking
-vim.keymap.set('n', '<LocalLeader>z=', [[:set spell! spelllang=en_gb<CR>]])
-
 -- Quick move to other splits
 -- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 -- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
