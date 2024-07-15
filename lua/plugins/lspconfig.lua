@@ -111,11 +111,11 @@ return {
 					})
 				end,
 			},
-			rust_analyzer = {
-				settings = {
-					["rust-analyzer"] = {},
-				},
-			},
+			-- rust_analyzer = {
+			-- 	settings = {
+			-- 		["rust-analyzer"] = {},
+			-- 	},
+			-- },
 			glsl_analyzer = {},
 			gopls = {},
 			templ = {},
