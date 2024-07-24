@@ -8,4 +8,5 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = { signs = false },
     },
+    "folke/zen-mode.nvim"
 }

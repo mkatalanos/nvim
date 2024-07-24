@@ -82,13 +82,22 @@ return {
 					},
 				},
 			},
-			pylsp = {
+			-- pylsp = {
+			-- 	settings = {
+			-- 		pylsp = {
+			-- 			plugins = {
+			-- 				pycodestyle = {
+			-- 					enabled = false,
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+			basedpyright = {
 				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								enabled = false,
-							},
+					basedpyright = {
+						analysis = {
+							typeCheckingMode = "off",
 						},
 					},
 				},
@@ -111,14 +120,15 @@ return {
 					})
 				end,
 			},
-			-- rust_analyzer = {
-			-- 	settings = {
-			-- 		["rust-analyzer"] = {},
-			-- 	},
-			-- },
+			rust_analyzer = {
+				settings = {
+					["rust-analyzer"] = {},
+				},
+			},
 			glsl_analyzer = {},
 			gopls = {},
 			templ = {},
+			yamlls = {},
 			tailwindcss = {
 				filetypes = {
 					"aspnetcorerazor",
