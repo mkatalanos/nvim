@@ -122,13 +122,18 @@ return {
 			},
 			rust_analyzer = {
 				settings = {
-					["rust-analyzer"] = {},
+					["rust-analyzer"] = {
+						check = {
+							command = "clippy",
+						},
+					},
 				},
 			},
 			glsl_analyzer = {},
 			gopls = {},
 			templ = {},
 			yamlls = {},
+			tsserver = {},
 			tailwindcss = {
 				filetypes = {
 					"aspnetcorerazor",
