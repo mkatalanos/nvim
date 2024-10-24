@@ -82,26 +82,26 @@ return {
 					},
 				},
 			},
-			-- pylsp = {
-			-- 	settings = {
-			-- 		pylsp = {
-			-- 			plugins = {
-			-- 				pycodestyle = {
-			-- 					enabled = false,
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
-			basedpyright = {
+			pylsp = {
 				settings = {
-					basedpyright = {
-						analysis = {
-							typeCheckingMode = "off",
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								enabled = false,
+							},
 						},
 					},
 				},
 			},
+			-- basedpyright = {
+			-- 	settings = {
+			-- 		basedpyright = {
+			-- 			analysis = {
+			-- 				typeCheckingMode = "off",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			ltex = {
 				settings = {
 					ltex = {
@@ -131,17 +131,15 @@ return {
 			},
 			glsl_analyzer = {},
 			gopls = {},
-			templ = {},
 			yamlls = {},
-			tsserver = {},
 			hls = {},
 			-- fortls = {},
-			tailwindcss = {
-				filetypes = { "django-html", "htmldjango", "gohtml", "gohtmltmpl", "haml", "handlebars", "html",
-					"html-eex", "heex", "php", "css", "postcss", "scss", "javascript", "javascriptreact", "typescript",
-					"typescriptreact", "vue", "svelte", "templ",
-				},
-			},
+			-- tailwindcss = {
+			-- 	filetypes = { "django-html", "htmldjango", "gohtml", "gohtmltmpl", "haml", "handlebars", "html",
+			-- 		"html-eex", "heex", "php", "css", "postcss", "scss", "javascript", "javascriptreact", "typescript",
+			-- 		"typescriptreact", "vue", "svelte", "templ",
+			-- 	},
+			-- },
 		}
 		require("mason").setup()
 
