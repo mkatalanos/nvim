@@ -12,7 +12,8 @@ return { -- Autoformat
 			javascriptreact = { "prettier" },
 			typescriptreact = { "prettier" },
 			yaml = { "prettier" },
-			fortran = {"fprettify"}
+			fortran = {"fprettify"},
+			tex =  {"latexindent"}
 		},
 		lsp_fallback = true,
 	},
