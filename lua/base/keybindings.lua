@@ -66,6 +66,12 @@ vim.keymap.set("n", "<C-Right>", "<C-w><C-l>", { desc = "Move focus to the right
 vim.keymap.set("n", "<C-Down>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-Up>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Quick move windows
+vim.keymap.set("n", "<C-S-Left>", "<C-w><S-h>", { desc = "Move window to the left" })
+vim.keymap.set("n", "<C-S-Right>", "<C-w><S-l>", { desc = "Move window to the right" })
+vim.keymap.set("n", "<C-S-Down>", "<C-w><S-j>", { desc = "Move window down" })
+vim.keymap.set("n", "<C-S-Up>", "<C-w><S-k>", { desc = "Move window up" })
+
 -- Diagnostics
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Diagnostic list" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
