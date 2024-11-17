@@ -50,3 +50,6 @@ o.clipboard = "unnamedplus"
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
 o.smartcase = true
+
+-- Enable EXRC
+o.exrc = true
