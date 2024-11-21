@@ -26,6 +26,8 @@ return {
 					depth = 2,
 					search_keys = {'title','year','author'},
 					global_files = { "~/Zotero/bibliography.bib" },
+					context = true,
+					context_fallback = true,
 				},
 			},
 		})
