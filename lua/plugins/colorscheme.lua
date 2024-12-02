@@ -38,7 +38,6 @@ local Kanagawa = {
 		end
 		vim.api.nvim_create_user_command("SwitchTheme", switch_theme, {})
 		vim.cmd.colorscheme("kanagawa")
-
 	end,
 }
 
