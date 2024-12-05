@@ -10,15 +10,6 @@ return {
 		-- Autocomplete
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/nvim-cmp",
-
-		-- Ltex-extra
-		{
-			"barreiroleo/ltex-extra.nvim",
-			build = function()
-				local path = vim.fn.stdpath("data") .. "/ltex_extra/"
-				vim.fn.mkdir(path, "p")
-			end,
-		},
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -64,35 +55,35 @@ return {
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local servers = {
-			clangd = {},
-			lua_ls = {
-				settings = {
-					Lua = {
-						runtime = { version = "LuaJIT" },
-						workspace = {
-							checkThirdParty = false,
-							library = {
-								"${3rd}/luv/library",
-								unpack(vim.api.nvim_get_runtime_file("", true)),
-							},
-						},
-						completion = {
-							callSnippet = "Replace",
-						},
-					},
-				},
-			},
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								enabled = false,
-							},
-						},
-					},
-				},
-			},
+			-- clangd = {},
+			-- lua_ls = {
+			-- 	settings = {
+			-- 		Lua = {
+			-- 			runtime = { version = "LuaJIT" },
+			-- 			workspace = {
+			-- 				checkThirdParty = false,
+			-- 				library = {
+			-- 					"${3rd}/luv/library",
+			-- 					unpack(vim.api.nvim_get_runtime_file("", true)),
+			-- 				},
+			-- 			},
+			-- 			completion = {
+			-- 				callSnippet = "Replace",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+			-- pylsp = {
+			-- 	settings = {
+			-- 		pylsp = {
+			-- 			plugins = {
+			-- 				pycodestyle = {
+			-- 					enabled = false,
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			-- basedpyright = {
 			-- 	settings = {
 			-- 		basedpyright = {
@@ -102,24 +93,6 @@ return {
 			-- 		},
 			-- 	},
 			-- },
-			ltex = {
-				settings = {
-					ltex = {
-						language = "en-GB",
-						setenceCacheSize = 2000,
-						additionalRules = {
-							enablePickyRules = true,
-							motherTongue = "el-GR",
-						},
-					},
-				},
-				on_attach = function(_client, _bufnr)
-					require("ltex_extra").setup({
-						load_langs = { "en-GB", "el-GR" },
-						path = vim.fn.stdpath("data") .. "/ltex_extra/",
-					})
-				end,
-			},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
@@ -127,9 +100,9 @@ return {
 		-- Mason ensure installed Formatters etc
 		vim.list_extend(ensure_installed, {
 			-- Formatters
-			"stylua",
-			"autopep8",
-			"isort",
+			-- "stylua",
+			-- "autopep8",
+			-- "isort",
 		})
 
 		require("mason").setup()
