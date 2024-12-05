@@ -44,9 +44,6 @@ o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
 o.undofile = true
 -- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
 
--- Makes neovim and host OS clipboard play nicely with each other
-o.clipboard = "unnamedplus"
-
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
 o.smartcase = true
