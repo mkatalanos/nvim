@@ -120,40 +120,16 @@ return {
 					})
 				end,
 			},
-			rust_analyzer = {
-				settings = {
-					["rust-analyzer"] = {
-						check = {
-							command = "clippy",
-						},
-					},
-				},
-			},
-			glsl_analyzer = {},
-			gopls = {},
-			yamlls = {},
-			hls = {},
-			-- fortls = {},
-			-- tailwindcss = {
-			-- 	filetypes = { "django-html", "htmldjango", "gohtml", "gohtmltmpl", "haml", "handlebars", "html",
-			-- 		"html-eex", "heex", "php", "css", "postcss", "scss", "javascript", "javascriptreact", "typescript",
-			-- 		"typescriptreact", "vue", "svelte", "templ",
-			-- 	},
-			-- },
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
 
 		-- Mason ensure installed Formatters etc
 		vim.list_extend(ensure_installed, {
-			-- DAPs
-			"delve",
 			-- Formatters
 			"stylua",
 			"autopep8",
 			"isort",
-			"prettier",
-			-- "fprettify"
 		})
 
 		require("mason").setup()
