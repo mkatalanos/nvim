@@ -133,6 +133,7 @@ return {
 			gopls = {},
 			yamlls = {},
 			hls = {},
+			texlab = {}
 			-- fortls = {},
 			-- tailwindcss = {
 			-- 	filetypes = { "django-html", "htmldjango", "gohtml", "gohtmltmpl", "haml", "handlebars", "html",
