@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {
-	desc = "Opens a terminal in a new tab",
+	desc = "Make terminal buffers look normal",
 	group = vim.api.nvim_create_augroup("custom-term-open", {}),
 	callback = function()
 		vim.opt_local.number = false

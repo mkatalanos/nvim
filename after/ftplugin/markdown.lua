@@ -12,4 +12,4 @@ local function toggle_auto_wrap()
 	end
 end
 
-vim.api.nvim_create_user_command("ToggleAutoWrap", toggle_auto_wrap,{})
+vim.api.nvim_create_user_command("ToggleAutoWrap", toggle_auto_wrap, {})
