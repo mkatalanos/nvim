@@ -10,7 +10,6 @@ g.maplocalleader = ","
 o.number = true
 o.relativenumber = true
 o.signcolumn = "auto"
-o.foldcolumn = "auto"
 o.cursorline = true
 o.splitbelow = true
 o.splitright = true

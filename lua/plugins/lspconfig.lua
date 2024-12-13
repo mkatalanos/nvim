@@ -61,6 +61,12 @@ return {
 		})
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+		-- Add capabilities for folding
+		capabilities.textDocument.foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		}
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local servers = {
@@ -133,7 +139,7 @@ return {
 			gopls = {},
 			yamlls = {},
 			hls = {},
-			texlab = {}
+			texlab = {},
 			-- fortls = {},
 			-- tailwindcss = {
 			-- 	filetypes = { "django-html", "htmldjango", "gohtml", "gohtmltmpl", "haml", "handlebars", "html",
