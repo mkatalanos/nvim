@@ -33,11 +33,6 @@ return {
             indent = { enable = true }
         }
 
-        vim.cmd([[
-            set foldmethod=expr
-            set foldexpr=nvim_treesitter#foldexpr()
-            set nofoldenable " Disable folding at startup.
-        ]])
         vim.filetype.add({ extension = { templ = "templ" } })
     end
 }
