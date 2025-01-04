@@ -55,7 +55,9 @@ end)
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })
 
 -- Term on newtab
-vim.keymap.set("n", "<leader>t", [[:tabnew +terminal<CR>]], { desc = "Launch terminal in new tab" })
+vim.keymap.set("n", "<leader>tt", [[:tabnew +terminal<CR>]], { desc = "Launch terminal in new tab" })
+vim.keymap.set("n", "<leader>tv", [[:vs +terminal<CR>]], { desc = "Launch terminal in new vertical split" })
+vim.keymap.set("n", "<leader>ts", [[:sp +terminal<CR>]], { desc = "Launch terminal in new split" })
 
 -- NOHL on Escape
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
