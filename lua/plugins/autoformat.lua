@@ -14,6 +14,7 @@ return { -- Autoformat
 			yaml = { "prettier" },
 			fortran = { "fprettify" },
 			tex = { "latexindent" },
+			plaintex = { "latexindent" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 		},
