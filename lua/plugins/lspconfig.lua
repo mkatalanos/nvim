@@ -70,7 +70,13 @@ return {
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local servers = {
-			clangd = {},
+			clangd = {
+				settings = {
+					clangd = {
+						arguments = { "--cuda-path=/usr/local/cuda/" },
+					},
+				},
+			},
 			lua_ls = {
 				settings = {
 					Lua = {
