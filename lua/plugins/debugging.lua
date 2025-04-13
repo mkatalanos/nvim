@@ -23,7 +23,7 @@ return {
 			vim.keymap.set(modes, keys, func, { desc = "DAP: " .. desc })
 		end
 
-		map("n", "<F5>", dap.continue, "Continue / Start Debugging")
+		map("n", "<F4>", dap.continue, "Continue / Start Debugging")
 		map("n", "<F6>", dap.step_over, "Step Over")
 		map("n", "<F7>", dap.step_into, "Step Into")
 		map("n", "<F8>", dap.step_out, "Step Out")

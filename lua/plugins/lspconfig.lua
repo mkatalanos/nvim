@@ -42,7 +42,6 @@ return {
 				map("<F2>", vim.lsp.buf.rename, "Rename variable")
 				map("<F3>", vim.lsp.buf.format, "Autoformat using LSP")
 				map("<LocalLeader><F3>", conform.format, "Autoformat using Conform")
-				map("<F4>", vim.lsp.buf.code_action, "Code action")
 				map("<M-CR>", vim.lsp.buf.code_action, "Code action")
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)

@@ -5,7 +5,7 @@ return { -- Autoformat
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "isort", "autopep8" },
-			markdown = { "prettier"},
+			markdown = { "prettier" },
 			rust = { "rustfmt" },
 			typescript = { "prettier" },
 			javascript = { "prettier" },
