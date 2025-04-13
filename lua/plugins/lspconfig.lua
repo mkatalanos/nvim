@@ -144,7 +144,7 @@ return {
 			glsl_analyzer = {},
 			gopls = {},
 			yamlls = {},
-			hls = {},
+			-- hls = {},
 			texlab = {},
 			-- fortls = {},
 			-- tailwindcss = {
