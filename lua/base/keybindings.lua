@@ -8,7 +8,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<LocalLeader>p", [["_dP]])
 
 -- Copy to clipboard
-vim.keymap.set({ "n", "v" }, "<LocalLeader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<Leader>y", [["+y]])
 
 -- Delete to void
 vim.keymap.set({ "n", "v" }, "<LocalLeader>d", [["_d]])

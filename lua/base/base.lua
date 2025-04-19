@@ -49,3 +49,8 @@ o.smartcase = true
 
 -- Enable EXRC
 o.exrc = true
+
+-- Clipboard
+if vim.env.WAYLAND_DISPLAY then
+    vim.opt.clipboard="unnamedplus"
+end

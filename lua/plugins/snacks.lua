@@ -32,11 +32,12 @@ return {
 		end, "Bufdelete")
 		map("<Leader>bo", Snacks.bufdelete.other, "Bufdelete other")
 		map("<Leader>ba", Snacks.bufdelete.all, "Bufdelete all")
-		map("<Leader>bz", function()
-			Snacks.zen()
-		end, "Toggle Zen Mode")
 		map("<LocalLeader>k", function()
 			Snacks.image.hover()
 		end, "Hover Image")
+
+		vim.api.nvim_create_user_command("ZenMode", function()
+			Snacks.zen()
+		end, {})
 	end,
 }
