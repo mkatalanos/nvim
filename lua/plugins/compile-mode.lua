@@ -1,6 +1,5 @@
 return {
 	"ej-shafran/compile-mode.nvim",
-	version = "latest",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},

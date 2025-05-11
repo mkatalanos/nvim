@@ -24,6 +24,9 @@ vim.keymap.set("", "<M-z>", function()
 	vim.cmd([[set wrap!]])
 end)
 
+-- Search in visual selection
+vim.keymap.set("x","/","<Esc>/\\%V")
+
 -- Replace visual selection with pandoc latex
 vim.keymap.set("v", "<LocalLeader>mark", [[:'<,'>! pandoc -f markdown -t latex --biblatex<CR>]])
 
@@ -78,3 +81,4 @@ vim.keymap.set("n", "<C-S-Up>", "<C-w><S-k>", { desc = "Move window up" })
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Diagnostic list" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+

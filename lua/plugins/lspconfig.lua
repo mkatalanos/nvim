@@ -31,7 +31,12 @@ return {
 				local builtin = require("telescope.builtin")
 				local conform = require("conform")
 
-				map("K", vim.lsp.buf.hover, "Hover Documentation")
+				map("K", function()
+					vim.lsp.buf.hover({ border = "rounded" })
+				end, "Hover Documentation")
+				map("<C-K>", function()
+					vim.lsp.buf.signature_help({ border = "rounded" })
+				end, "Hover Documentation")
 				map("gd", builtin.lsp_definitions, "[G]oto [d]efinition")
 				map("gD", vim.lsp.buf.declaration, " [G]oto [D]eclaration")
 				map("gi", builtin.lsp_implementations, "[G]oto [i]mplementations")
@@ -93,17 +98,18 @@ return {
 					},
 				},
 			},
-			pylsp = {
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								enabled = false,
-							},
-						},
-					},
-				},
-			},
+			-- pylsp = {
+			-- 	settings = {
+			-- 		pylsp = {
+			-- 			plugins = {
+			-- 				pycodestyle = {
+			-- 					enabled = false,
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+			pyright = {},
 			-- basedpyright = {
 			-- 	settings = {
 			-- 		basedpyright = {
@@ -187,8 +193,6 @@ return {
 		})
 
 		-- Enable borders
-
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 		vim.diagnostic.config({ float = { border = "rounded" } })
 	end,
 }
