@@ -29,6 +29,7 @@ return {
 				end
 
 				local builtin = require("telescope.builtin")
+				local lsp = vim.lsp.buf
 				local conform = require("conform")
 
 				map("K", function()
@@ -38,7 +39,7 @@ return {
 					vim.lsp.buf.signature_help({ border = "rounded" })
 				end, "Hover Documentation")
 				map("gd", builtin.lsp_definitions, "[G]oto [d]efinition")
-				map("gD", vim.lsp.buf.declaration, " [G]oto [D]eclaration")
+				map("gD", lsp.declaration, " [G]oto [D]eclaration")
 				map("gi", builtin.lsp_implementations, "[G]oto [i]mplementations")
 				map("go", builtin.lsp_type_definitions, "[G]oto type definiti[o]ns")
 				map("gr", builtin.lsp_references, "[G]oto [R]eferences")
@@ -53,12 +54,12 @@ return {
 				if client and client.server_capabilities.documentHighlightProvider then
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 						buffer = event.buf,
-						callback = vim.lsp.buf.document_highlight,
+						callback = lsp.document_highlight,
 					})
 
 					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 						buffer = event.buf,
-						callback = vim.lsp.buf.clear_references,
+						callback = lsp.clear_references,
 					})
 				end
 			end,
@@ -98,18 +99,18 @@ return {
 					},
 				},
 			},
-			-- pylsp = {
-			-- 	settings = {
-			-- 		pylsp = {
-			-- 			plugins = {
-			-- 				pycodestyle = {
-			-- 					enabled = false,
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
-			pyright = {},
+			pylsp = {
+				-- settings = {
+				-- 	pylsp = {
+				-- 		plugins = {
+				-- 			pycodestyle = {
+				-- 				enabled = false,
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
+			},
+			-- pyright = {},
 			-- basedpyright = {
 			-- 	settings = {
 			-- 		basedpyright = {
