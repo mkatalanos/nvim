@@ -3,12 +3,11 @@ return {
 
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for neovim
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		{ "mason-org/mason.nvim", opts = {} },
+		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		-- Autocomplete
-		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/nvim-cmp",
 
 		-- Ltex-extra
@@ -27,6 +26,9 @@ return {
 				local map = function(keys, func, desc)
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
+				local imap = function(keys, func, desc)
+					vim.keymap.set("i", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+				end
 
 				local builtin = require("telescope.builtin")
 				local lsp = vim.lsp.buf
@@ -38,7 +40,11 @@ return {
 				map("<C-K>", function()
 					vim.lsp.buf.signature_help({ border = "rounded" })
 				end, "Hover Documentation")
-				map("gd", builtin.lsp_definitions, "[G]oto [d]efinition")
+
+				imap("<C-S>", function()
+					vim.lsp.buf.signature_help({ border = "rounded" })
+				end, "Hover Documentation")
+				map("gd", lsp.definition, "[G]oto [d]efinition")
 				map("gD", lsp.declaration, " [G]oto [D]eclaration")
 				map("gi", builtin.lsp_implementations, "[G]oto [i]mplementations")
 				map("go", builtin.lsp_type_definitions, "[G]oto type definiti[o]ns")
@@ -64,15 +70,6 @@ return {
 				end
 			end,
 		})
-
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-		-- Add capabilities for folding
-		capabilities.textDocument.foldingRange = {
-			dynamicRegistration = false,
-			lineFoldingOnly = true,
-		}
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 		local servers = {
 			clangd = {
@@ -110,16 +107,6 @@ return {
 				-- 	},
 				-- },
 			},
-			-- pyright = {},
-			-- basedpyright = {
-			-- 	settings = {
-			-- 		basedpyright = {
-			-- 			analysis = {
-			-- 				typeCheckingMode = "off",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
 			ltex = {
 				settings = {
 					ltex = {
@@ -152,13 +139,6 @@ return {
 			yamlls = {},
 			-- hls = {},
 			texlab = {},
-			-- fortls = {},
-			-- tailwindcss = {
-			-- 	filetypes = { "django-html", "htmldjango", "gohtml", "gohtmltmpl", "haml", "handlebars", "html",
-			-- 		"html-eex", "heex", "php", "css", "postcss", "scss", "javascript", "javascriptreact", "typescript",
-			-- 		"typescriptreact", "vue", "svelte", "templ",
-			-- 	},
-			-- },
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
@@ -174,26 +154,36 @@ return {
 			"prettier",
 			-- "fprettify"
 		})
-
-		require("mason").setup()
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		require("mason-lspconfig").setup({
-			handlers = {
-				function(server_name)
-					local exceptions = {}
-					for _, var in ipairs(exceptions) do
-						if server_name == var then
-							return true
-						end
-					end
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
+			automatic_enable = vim.tbl_keys(servers or {}),
 		})
 
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		for server_name, config in pairs(servers) do
+			vim.lsp.config(server_name, config)
+		end
+		-- require("mason-lspconfig").setup({
+		--     handlers = {
+		--         function(server_name)
+		--             local exceptions = {}
+		--             for _, var in ipairs(exceptions) do
+		--                 if server_name == var then
+		--                     return true
+		--                 end
+		--             end
+		--             local server = servers[server_name] or {}
+		--             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+		--             -- require("lspconfig")[server_name].setup(server)
+		--             vim.lsp.config("server_name")
+		--         end,
+		--     },
+		-- })
+
 		-- Enable borders
-		vim.diagnostic.config({ float = { border = "rounded" } })
+		vim.diagnostic.config({
+			float = { border = "rounded" },
+			virtual_lines = { current_line = true },
+		})
 	end,
 }

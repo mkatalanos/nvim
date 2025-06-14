@@ -15,6 +15,7 @@ o.splitright = true
 o.mouse = "a"
 o.showmode = false
 o.hlsearch = true
+o.winborder = "rounded"
 
 -- Colours
 o.termguicolors = true
@@ -52,5 +53,5 @@ o.exrc = true
 
 -- Clipboard
 if vim.env.WAYLAND_DISPLAY then
-    vim.opt.clipboard="unnamedplus"
+	vim.opt.clipboard = "unnamedplus"
 end

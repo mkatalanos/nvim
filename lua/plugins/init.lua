@@ -1,12 +1,7 @@
 return {
 	"tpope/vim-surround",
+	"tpope/vim-sleuth"	,
 	"jiangmiao/auto-pairs",
 	"dkarter/bullets.vim",
-	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
 	"mbbill/undotree",
 }
