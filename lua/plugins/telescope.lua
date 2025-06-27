@@ -1,7 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
-	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
@@ -17,7 +16,6 @@ return {
 						["<esc>"] = actions.close,
 					},
 				},
-				border = false,
 			},
 			pickers = {
 				buffers = {
@@ -68,5 +66,18 @@ return {
 		vim.keymap.set("n", "<Leader>fn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[F]uzzy [N]eovim files" })
+
+		-- vim.api.nvim_create_autocmd("User", {
+		-- 	pattern = "TelescopeFindPre",
+		-- 	callback = function()
+		-- 		vim.opt_local.winborder = "none"
+		-- 		vim.api.nvim_create_autocmd("WinLeave", {
+		-- 			once = true,
+		-- 			callback = function()
+		-- 				vim.opt_local.winborder = "rounded"
+		-- 			end,
+		-- 		})
+		-- 	end,
+		-- })
 	end,
 }

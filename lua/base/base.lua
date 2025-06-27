@@ -15,7 +15,7 @@ o.splitright = true
 o.mouse = "a"
 o.showmode = false
 o.hlsearch = true
-o.winborder = "rounded"
+-- o.winborder = "rounded"
 
 -- Colours
 o.termguicolors = true

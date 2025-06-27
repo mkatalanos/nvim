@@ -4,8 +4,8 @@ return { -- Autoformat
 		notify_on_error = true,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			python = { "isort", "autopep8" },
-			markdown = { "prettier"},
+			python = { "autopep8" },
+			markdown = { "prettier" },
 			rust = { "rustfmt" },
 			typescript = { "prettier" },
 			javascript = { "prettier" },

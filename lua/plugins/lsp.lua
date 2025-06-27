@@ -2,6 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 
 	dependencies = {
+
 		-- Automatically install LSPs and related tools to stdpath for neovim
 		{ "mason-org/mason.nvim", opts = {} },
 		"mason-org/mason-lspconfig.nvim",
@@ -10,13 +11,22 @@ return {
 		-- Autocomplete
 		"hrsh7th/nvim-cmp",
 
+		-- Status Updates
+		-- { "j-hui/fidget.nvim", opts = {} },
+
 		-- Ltex-extra
 		{
 			"barreiroleo/ltex-extra.nvim",
+			branch = "dev",
+			commit = "5b37806dfbadeb8d6c0f1ee03140a60ffa40852c",
 			build = function()
 				local path = vim.fn.stdpath("data") .. "/ltex_extra/"
 				vim.fn.mkdir(path, "p")
 			end,
+			opts = {
+				load_langs = { "en-GB", "el-GR" },
+				path = vim.fn.stdpath("data") .. "/ltex_extra/",
+			},
 		},
 	},
 	config = function()
@@ -37,27 +47,31 @@ return {
 				map("K", function()
 					vim.lsp.buf.hover({ border = "rounded" })
 				end, "Hover Documentation")
-				map("<C-K>", function()
+				map("<C-S>", function()
 					vim.lsp.buf.signature_help({ border = "rounded" })
 				end, "Hover Documentation")
 
 				imap("<C-S>", function()
 					vim.lsp.buf.signature_help({ border = "rounded" })
 				end, "Hover Documentation")
-				map("gd", lsp.definition, "[G]oto [d]efinition")
+				map("gd", builtin.lsp_definitions, "[G]oto [d]efinition")
 				map("gD", lsp.declaration, " [G]oto [D]eclaration")
 				map("gi", builtin.lsp_implementations, "[G]oto [i]mplementations")
 				map("go", builtin.lsp_type_definitions, "[G]oto type definiti[o]ns")
-				map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+				map("grr", builtin.lsp_references, "[G]oto [R]eferences")
 				map("<Leader>sd", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
 				map("<Leader>sw", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-				map("<F2>", vim.lsp.buf.rename, "Rename variable")
-				map("<F3>", vim.lsp.buf.format, "Autoformat using LSP")
+				map("<F2>", lsp.rename, "Rename variable")
+				map("<F3>", lsp.format, "Autoformat using LSP")
 				map("<LocalLeader><F3>", conform.format, "Autoformat using Conform")
-				map("<M-CR>", vim.lsp.buf.code_action, "Code action")
+				map("<M-CR>", lsp.code_action, "Code action")
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if client and client.server_capabilities.documentHighlightProvider then
+
+				if
+					client
+					and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+				then
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 						buffer = event.buf,
 						callback = lsp.document_highlight,
@@ -67,6 +81,13 @@ return {
 						buffer = event.buf,
 						callback = lsp.clear_references,
 					})
+				end
+
+				if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+					local toggle_inlay = function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+					end
+					vim.api.nvim_buf_create_user_command(event.buf, "ToggleInlay", toggle_inlay, {})
 				end
 			end,
 		})
@@ -118,12 +139,12 @@ return {
 						},
 					},
 				},
-				on_attach = function(_client, _bufnr)
-					require("ltex_extra").setup({
-						load_langs = { "en-GB", "el-GR" },
-						path = vim.fn.stdpath("data") .. "/ltex_extra/",
-					})
-				end,
+				-- on_attach = function(_client, _bufnr)
+				-- 	require("ltex_extra").setup({
+				-- 		load_langs = { "en-GB", "el-GR" },
+				-- 		path = vim.fn.stdpath("data") .. "/ltex_extra/",
+				-- 	})
+				-- end,
 			},
 			rust_analyzer = {
 				settings = {
@@ -163,27 +184,11 @@ return {
 		for server_name, config in pairs(servers) do
 			vim.lsp.config(server_name, config)
 		end
-		-- require("mason-lspconfig").setup({
-		--     handlers = {
-		--         function(server_name)
-		--             local exceptions = {}
-		--             for _, var in ipairs(exceptions) do
-		--                 if server_name == var then
-		--                     return true
-		--                 end
-		--             end
-		--             local server = servers[server_name] or {}
-		--             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-		--             -- require("lspconfig")[server_name].setup(server)
-		--             vim.lsp.config("server_name")
-		--         end,
-		--     },
-		-- })
 
-		-- Enable borders
+		-- Diagnostic Config
 		vim.diagnostic.config({
 			float = { border = "rounded" },
-			virtual_lines = { current_line = true },
+			virtual_text = { current_line = true },
 		})
 	end,
 }

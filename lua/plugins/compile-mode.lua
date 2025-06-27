@@ -6,7 +6,9 @@ return {
 	config = function()
 		vim.g.compile_mode = {
 			bang_expansion = true,
+			default_command = "",
 		}
+
 		local compile = require("compile-mode")
 
 		local compile_ran = false
