@@ -1,18 +1,33 @@
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"theHamsta/nvim-dap-virtual-text",
+		{
+			"igorlfs/nvim-dap-view",
+			opts = {
+				winbar = {
+					controls = {
+						enabled = true,
+					},
+				},
+			},
+		},
 		"leoluz/nvim-dap-go",
 		"mfussenegger/nvim-dap-python",
 	},
 	config = function()
-		local dap = require("dap")
-
-		require("nvim-dap-virtual-text").setup({
-			commented = true,
-			only_first_definition = false,
-			clear_on_continue = true,
-		})
+		local dap, dv = require("dap"), require("dap-view")
+		dap.listeners.before.attach["dap-view-config"] = function()
+			dv.open()
+		end
+		dap.listeners.before.launch["dap-view-config"] = function()
+			dv.open()
+		end
+		dap.listeners.before.event_terminated["dap-view-config"] = function()
+			dv.close()
+		end
+		dap.listeners.before.event_exited["dap-view-config"] = function()
+			dv.close()
+		end
 
 		-- Language specific stuff
 		require("dap-go").setup()
@@ -32,7 +47,6 @@ return {
 		map("n", "<LocalLeader>lp", function()
 			dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 		end, "Log point message")
-		map("n", "<LocalLeader>dr", dap.repl.toggle, "REPL Open")
 		map("n", "<LocalLeader>dl", dap.run_last, "Run last")
 		map({ "n", "v" }, "<LocalLeader>dh", function()
 			require("dap.ui.widgets").hover()
@@ -45,5 +59,8 @@ return {
 			local widgets = require("dap.ui.widgets")
 			widgets.sidebar(widgets.scopes).toggle()
 		end, "Show scopes")
+		map("n", "<Leader>dt", function()
+			dv.toggle()
+		end, "Toggle Debug View")
 	end,
 }
