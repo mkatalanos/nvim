@@ -36,13 +36,21 @@ o.smartindent = true
 o.wrap = true
 o.linebreak = true
 o.textwidth = 300
+o.foldlevel = 99
 o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = -1 -- If negative, shiftwidth value is used
-o.list = false
-o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
+-- o.list = true
 o.undofile = true
--- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
+vim.opt.listchars = {
+	tab = "│ ",
+	trail = "·",
+	precedes = "◂",
+	extends = "▸",
+	nbsp = "◇",
+	space = " ",
+	-- multispace = "·",
+}
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
