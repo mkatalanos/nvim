@@ -59,6 +59,9 @@ o.smartcase = true
 -- Enable EXRC
 o.exrc = true
 
+-- Set default tex flavour
+vim.g.tex_flavor="latex"
+
 -- Clipboard
 if vim.env.WAYLAND_DISPLAY then
 	vim.opt.clipboard = "unnamedplus"
