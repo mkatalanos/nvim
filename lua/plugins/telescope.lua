@@ -33,9 +33,13 @@ return {
 				bibtex = {
 					depth = 2,
 					search_keys = { "title", "year", "author" },
-					global_files = { "~/Zotero/bibliography.bib" },
+					-- global_files = { "~/Zotero/bibliography.bib" },
 					context = true,
 					context_fallback = true,
+					custom_formats = {
+						{ id = "latex", cite_marker = "\\autocite{%s}" },
+					},
+					format = "latex",
 				},
 			},
 		})
