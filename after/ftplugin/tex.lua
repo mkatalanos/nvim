@@ -1,4 +1,4 @@
-vim.opt_local.textwidth = 100
+vim.opt_local.textwidth = 90
 vim.opt_local.formatoptions = vim.opt_local.formatoptions + "t"
 
 local function toggle_auto_wrap()

@@ -129,7 +129,7 @@ return {
 				-- 	},
 				-- },
 			},
-			ltex = {
+			ltex_plus = {
 				settings = {
 					ltex = {
 						language = "en-GB",
