@@ -161,6 +161,7 @@ return {
 			yamlls = {},
 			-- hls = {},
 			texlab = {},
+			mesonlsp = {}
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
