@@ -1,5 +1,5 @@
 return {
-    'cameron-wags/rainbow_csv.nvim',
+    'mechatroner/rainbow_csv',
     config = true,
     ft = {
         'csv',
@@ -10,10 +10,4 @@ return {
         'rfc_csv',
         'rfc_semicolon'
     },
-    cmd = {
-        'RainbowDelim',
-        'RainbowDelimSimple',
-        'RainbowDelimQuoted',
-        'RainbowMultiDelim'
-    }
 }
