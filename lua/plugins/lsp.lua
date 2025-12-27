@@ -59,6 +59,7 @@ return {
 				map("gD", lsp.declaration, " [G]oto [D]eclaration")
 				map("gri", builtin.lsp_implementations, "[G]oto [i]mplementations")
 				map("go", builtin.lsp_type_definitions, "[G]oto type definiti[o]ns")
+				map("gO", builtin.lsp_document_symbols, "[G]oto document symb[O]ls")
 				map("grr", builtin.lsp_references, "[G]oto [R]eferences")
 				map("<Leader>sd", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
 				map("<Leader>sw", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
