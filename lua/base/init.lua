@@ -1,4 +1,5 @@
 require("base.base")
+require("base.lsp")
 require("base.autocommands")
 require("base.commands")
 require("base.bootstrap")
