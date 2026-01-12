@@ -1,7 +1,7 @@
 ---@diagnostic disable: missing-fields
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = 'master',
+	branch = "master",
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			-- A list of parser names, or "all" (the five listed parsers should always be installed)
@@ -25,8 +25,8 @@ return {
 						return true
 					end
 
-					-- Disable latex
-					if lang == 'latex' then
+					-- Disable latex highlighting as this is done in vimtex
+					if lang == "latex" then
 						return true
 					end
 				end,
