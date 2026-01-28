@@ -1,4 +1,5 @@
 vim.opt_local.textwidth = 80
+-- vim.opt_local.conceallevel = 2
 vim.opt_local.formatoptions = vim.opt_local.formatoptions + "t"
 
 local function toggle_auto_wrap()

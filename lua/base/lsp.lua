@@ -50,6 +50,19 @@ vim.lsp.config.rust_analyzer = {
 	},
 }
 
+vim.lsp.config.pylsp = {
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { "W391" },
+					maxLineLength = 80,
+				},
+			},
+		},
+	},
+}
+
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
