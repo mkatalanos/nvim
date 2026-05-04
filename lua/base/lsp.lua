@@ -5,6 +5,7 @@ vim.lsp.config.clangd = {
 		},
 	},
 }
+
 vim.lsp.config.lua_ls = {
 	settings = {
 		Lua = {
@@ -63,6 +64,17 @@ vim.lsp.config.pylsp = {
 	},
 }
 
+vim.lsp.config.matlab_ls = {
+	settings = {
+		MATLAB = {
+			indexWorkspace = true,
+			installPath = "/usr/local/MATLAB/R2025b/",
+			matlabConnectionTiming = "onStart",
+			telemetry = false,
+		},
+	},
+}
+
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
@@ -72,6 +84,10 @@ vim.lsp.enable({
 	"gopls",
 	"yamlls",
 	"mesonlsp",
+	"matlab_ls",
+	"julials",
+	"texlab",
+	"zls"
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {

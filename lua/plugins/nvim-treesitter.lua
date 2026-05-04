@@ -1,45 +1,90 @@
----@diagnostic disable: missing-fields
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
+	lazy = false,
+	branch = "main",
+	build = ":TSUpdate",
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			-- A list of parser names, or "all" (the five listed parsers should always be installed)
-			ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "latex" },
+		local ts = require("nvim-treesitter")
+		local parsers = {
+			"c",
+			"cpp",
+			"haskell",
+			"json",
+			"julia",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"meson",
+			"python",
+			"query",
+			"vim",
+			"vimdoc",
+		}
 
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
-			auto_install = true,
+		for _, parser in ipairs(parsers) do
+			ts.install(parser)
+		end
 
-			---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-			-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+		local patterns = {}
+		for _, parser in ipairs(parsers) do
+			local parser_patterns = vim.treesitter.language.get_filetypes(parser)
+			for _, pp in pairs(parser_patterns) do
+				table.insert(patterns, pp)
+			end
+		end
 
-			highlight = {
-				enable = true,
-
-				-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-				disable = function(lang, buf)
-					local max_filesize = 100 * 1024 -- 100 KB
-					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-					if ok and stats and stats.size > max_filesize then
-						return true
-					end
-
-					-- Disable latex highlighting as this is done in vimtex
-					if lang == "latex" then
-						return true
-					end
-				end,
-
-				-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-				-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-				-- Using this option may slow down your editor, and you may see some duplicate highlights.
-				-- Instead of true it can also be a list of languages
-				additional_vim_regex_highlighting = false,
-			},
-			indent = { enable = true },
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = patterns,
+			callback = function()
+				vim.treesitter.start()
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
 		})
-
-		vim.filetype.add({ extension = { templ = "templ" } })
 	end,
 }
+
+-- ---@diagnostic disable: missing-fields
+-- return {
+-- 	"nvim-treesitter/nvim-treesitter",
+-- 	branch = "master",
+-- 	config = function()
+-- 		require("nvim-treesitter.configs").setup({
+-- 			-- A list of parser names, or "all" (the five listed parsers should always be installed)
+-- 			ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "latex" },
+--
+-- 			-- Install parsers synchronously (only applied to `ensure_installed`)
+-- 			sync_install = false,
+-- 			auto_install = true,
+--
+-- 			---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+-- 			-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+--
+-- 			highlight = {
+-- 				enable = true,
+--
+-- 				-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+-- 				disable = function(lang, buf)
+-- 					local max_filesize = 100 * 1024 -- 100 KB
+-- 					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+-- 					if ok and stats and stats.size > max_filesize then
+-- 						return true
+-- 					end
+--
+-- 					-- Disable latex highlighting as this is done in vimtex
+-- 					if lang == "latex" then
+-- 						return true
+-- 					end
+-- 				end,
+--
+-- 				-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+-- 				-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+-- 				-- Using this option may slow down your editor, and you may see some duplicate highlights.
+-- 				-- Instead of true it can also be a list of languages
+-- 				additional_vim_regex_highlighting = false,
+-- 			},
+-- 			indent = { enable = true },
+-- 		})
+--
+-- 		vim.filetype.add({ extension = { templ = "templ" } })
+-- 	end,
+-- }
