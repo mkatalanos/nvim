@@ -87,7 +87,8 @@ vim.lsp.enable({
 	"matlab_ls",
 	"julials",
 	"texlab",
-	"zls"
+	"zls",
+	"hls",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
