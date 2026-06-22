@@ -1,10 +1,10 @@
 ---@diagnostic disable: unused-function
 --- Commands for notes
-local notes_path = vim.fn.expand("~/Documents/PC_Sync/Notes")
+local notes_path = vim.fn.expand("~/Documents/Notes")
 
 -- Function that creates a journal entry
 local function open_daily_note()
-	local dir = notes_path .. "/daily"
+	local dir = notes_path .. "/Daily"
 	local date = os.date("%Y-%m-%d")
 	local f_date = os.date("%Y_%m_%d")
 	local file = dir .. "/" .. f_date .. ".md"
@@ -20,9 +20,7 @@ local function open_daily_note()
 	-- Insert template only if file is new
 	if is_new then
 		vim.api.nvim_buf_set_lines(0, 0, -1, false, {
-			"---",
-			"date: " .. date,
-			"---",
+			"# " .. date,
 			"",
 			"",
 		})
@@ -221,8 +219,8 @@ local paste_img = function()
 end
 
 vim.api.nvim_create_user_command("Daily", open_daily_note, { desc = "Opens daily note" })
-vim.api.nvim_create_user_command("NewDict", new_dictionary_entry, { desc = "Makes a new dictionary entry" })
-vim.api.nvim_create_user_command("NewPaper", new_paper, { desc = "Makes a new paper entry" })
+-- vim.api.nvim_create_user_command("NewDict", new_dictionary_entry, { desc = "Makes a new dictionary entry" })
+-- vim.api.nvim_create_user_command("NewPaper", new_paper, { desc = "Makes a new paper entry" })
 vim.api.nvim_create_user_command("NImage", paste_img, { desc = "Paste image in notes folder" })
 --- Keymaps
 --- <Leader>ww : Finds todos
