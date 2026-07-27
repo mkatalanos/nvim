@@ -1,3 +1,3 @@
 return {
-	"https://github.com/brianhuster/unnest.nvim"
+	"brianhuster/unnest.nvim"
 }
