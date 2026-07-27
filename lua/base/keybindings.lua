@@ -24,7 +24,7 @@ vim.keymap.set("v", "<C-_>", "gc", { remap = true })
 vim.keymap.set("v", "<C-/>", "gc", { remap = true })
 
 -- Substitute current word
-vim.keymap.set("n", "<LocalLeader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<LocalLeader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 
 -- VS code style toggle wrap
 vim.keymap.set("", "<M-z>", function()
