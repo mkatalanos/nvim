@@ -14,11 +14,14 @@ return {
 			"lua",
 			"markdown",
 			"markdown_inline",
+			"go",
+			"gomod",
 			"meson",
 			"python",
 			"query",
 			"vim",
 			"vimdoc",
+			"dockerfile"
 		}
 
 		for _, parser in ipairs(parsers) do
