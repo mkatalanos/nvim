@@ -124,8 +124,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<Leader>sd", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
 		map("<Leader>sw", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 		map("<F2>", lsp.rename, "Rename variable")
-		map("<F3>", lsp.format, "Autoformat using LSP")
-		map("<LocalLeader><F3>", conform.format, "Autoformat using Conform")
+		map("<F3>", conform.format, "Autoformat using Conform (LSP Fallback)")
+		map("<LocalLeader><F3>", lsp.format, "Autoformat using LSP only")
 		map("<M-CR>", lsp.code_action, "Code action")
 
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
