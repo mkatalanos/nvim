@@ -63,6 +63,6 @@ o.exrc = true
 vim.g.tex_flavor = "latex"
 
 -- Clipboard
-if vim.env.WAYLAND_DISPLAY then
-	vim.opt.clipboard = "unnamedplus"
-end
+-- if vim.env.WAYLAND_DISPLAY then
+vim.opt.clipboard = "unnamedplus"
+-- end
